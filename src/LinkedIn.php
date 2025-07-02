@@ -1,29 +1,45 @@
 <?php
 
-namespace League\OAuth2\Client\Provider;
+namespace Jayraj018\OAuth2LinkedIn;
+
+use League\OAuth2\Client\Provider\AbstractProvider;
+use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+use League\OAuth2\Client\Token\AccessToken;
+use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
+use Psr\Http\Message\ResponseInterface;
 
 class LinkedIn extends AbstractProvider
 {
-    protected $baseAuthorizationUrl = 'https://www.linkedin.com/oauth/v2/authorization';
-    protected $baseAccessTokenUrl = 'https://www.linkedin.com/oauth/v2/accessToken';
-    protected $resourceOwnerDetailsUrl = 'https://api.linkedin.com/v2/me';
+    use BearerAuthorizationTrait;
+
+    protected $scopeSeparator = ' ';
+
+    protected function getBaseAuthorizationUrl()
+    {
+        return 'https://www.linkedin.com/oauth/v2/authorization';
+    }
+
+    protected function getBaseAccessTokenUrl(array $params)
+    {
+        return 'https://www.linkedin.com/oauth/v2/accessToken';
+    }
+
+    protected function getResourceOwnerDetailsUrl(AccessToken $token)
+    {
+        return 'https://api.linkedin.com/v2/userinfo';
+    }
 
     protected function getDefaultScopes()
     {
-        return ['r_liteprofile', 'r_emailaddress'];
+        return ['openid', 'profile', 'email'];
     }
 
-    protected function getScopeSeparator()
+    protected function checkResponse(ResponseInterface $response, $data)
     {
-        return ' ';
-    }
-
-    protected function checkResponse($response, $data)
-    {
-        if (isset($data['serviceErrorCode'])) {
+        if (isset($data['error'])) {
             throw new IdentityProviderException(
-                $data['message'] ?? $response->getReasonPhrase(),
-                $data['serviceErrorCode'],
+                $data['error_description'] ?? $data['message'],
+                $response->getStatusCode(),
                 $response
             );
         }
