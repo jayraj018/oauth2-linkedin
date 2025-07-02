@@ -14,17 +14,19 @@ class LinkedIn extends AbstractProvider
 
     protected $scopeSeparator = ' ';
 
-    protected function getBaseAuthorizationUrl()
+    // ✅ All required abstract methods must be public
+
+    public function getBaseAuthorizationUrl()
     {
         return 'https://www.linkedin.com/oauth/v2/authorization';
     }
 
-    protected function getBaseAccessTokenUrl(array $params)
+    public function getBaseAccessTokenUrl(array $params)
     {
         return 'https://www.linkedin.com/oauth/v2/accessToken';
     }
 
-    protected function getResourceOwnerDetailsUrl(AccessToken $token)
+    public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
         return 'https://api.linkedin.com/v2/userinfo';
     }
