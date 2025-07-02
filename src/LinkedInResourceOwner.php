@@ -1,12 +1,12 @@
 <?php
 
-namespace League\OAuth2\Client\Provider;
+namespace Jayraj018\OAuth2LinkedIn;
 
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
 class LinkedInResourceOwner implements ResourceOwnerInterface
 {
-    private $response;
+    protected $response;
 
     public function __construct(array $response)
     {
@@ -15,7 +15,7 @@ class LinkedInResourceOwner implements ResourceOwnerInterface
 
     public function getId()
     {
-        return $this->response['id'] ?? null;
+        return $this->response['sub'] ?? null;
     }
 
     public function toArray()
