@@ -1,24 +1,21 @@
 {
   "name": "jayraj018/oauth2-linkedin",
-  "description": "A custom LinkedIn provider for league/oauth2-client",
+  "description": "LinkedIn OAuth2 Provider for league/oauth2-client",
   "type": "library",
   "license": "MIT",
   "authors": [
     {
-      "name": "Jayraj Methus",
-      "email": "your-email@example.com"
+      "name": "Jayraj",
+      "email": "your@email.com"
     }
   ],
   "require": {
     "php": ">=7.2",
-    "league/oauth2-client": "^2.6"
+    "league/oauth2-client": "^2.4"
   },
   "autoload": {
     "psr-4": {
-      "League\\OAuth2\\Client\\Provider\\": "src/"
+      "Jayraj018\\OAuth2LinkedIn\\": "src/"
     }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+  }
 }
-
