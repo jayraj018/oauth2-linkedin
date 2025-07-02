@@ -1,0 +1,14 @@
+{
+  "name": "yourusername/oauth2-linkedin",
+  "description": "LinkedIn provider for league/oauth2-client",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "League\\OAuth2\\Client\\Provider\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "league/oauth2-client": "^2.0"
+  }
+}
