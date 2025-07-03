@@ -1,11 +1,11 @@
 {
-  "name": "jayraj018/oauth2-linkedin",
+  "name": "harshvghasiya/oauth2-linkedin",
   "description": "LinkedIn OAuth2 Provider for league/oauth2-client",
   "type": "library",
   "license": "MIT",
   "authors": [
     {
-      "name": "Jayraj",
+      "name": "Harsh",
       "email": "your@email.com"
     }
   ],
@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Jayraj018\\OAuth2LinkedIn\\": "src/"
+      "harshvghasiya\\OAuth2LinkedIn\\": "src/"
     }
   }
 }
